@@ -6,16 +6,16 @@ open class Atom {
     val type: String = javaClass.canonicalName
 }
 
-abstract class Node : Atom() {
+abstract class Node : Atom()
 
-    abstract val name: String
+abstract class ObjectNode(val name: Any) : Atom() {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) {
             return true
         }
 
-        if (other !is Node) {
+        if (other !is ObjectNode) {
             return false
         }
 

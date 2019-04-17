@@ -4,13 +4,13 @@ import org.junit.Test
 import kotlin.test.assertEquals
 
 
-class BaseAtomSpaceTest {
+class BaseMathTest {
 
     @Test
     fun testSum() {
 
         val baseAtomSpace = BaseAtomSpace()
-        initBaseAtomSpace(baseAtomSpace)
+        baseAtomSpace.init()
 
         val sum = SumLink(NumberNode(1.0), NumberNode(2.0))
         assertEquals(NumberNode(3.0), baseAtomSpace.execute(sum))
