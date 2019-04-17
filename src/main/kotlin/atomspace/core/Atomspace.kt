@@ -36,7 +36,7 @@ abstract class Node : Atom() {
 
 abstract class Link : Atom() {
 
-    abstract val values: List<Atom>
+    abstract val values: Array<out Atom>
 
     override fun toString() = buildString {
         append(type)
@@ -54,11 +54,11 @@ abstract class Link : Atom() {
             return false
         }
 
-        return this.values == other.values
+        return this.values.contentDeepEquals(other.values)
     }
 
     override fun hashCode(): Int {
-        return values.hashCode()
+        return values.contentDeepHashCode()
     }
 }
 

@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
     initBaseAtomSpace(baseAtomSpace)
 
 
-    val sum = SumLink(listOf(NumberNode(1.0), NumberNode(2.0)))
+    val sum = SumLink(NumberNode(1.0), NumberNode(2.0))
     val result = baseAtomSpace.execute(sum)
 
     println("execute: $sum = $result")
