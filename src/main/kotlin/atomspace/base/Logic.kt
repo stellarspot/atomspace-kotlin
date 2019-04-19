@@ -21,6 +21,7 @@ fun Boolean.toNode() = when (this) {
 fun andAction(atomspace: AtomSpace, atom: Atom): Atom = when (atom) {
     is AndLink -> atom
             .values
+            .map { atomspace.execute(it) }
             .map {
                 when (it) {
                     TrueNode -> true

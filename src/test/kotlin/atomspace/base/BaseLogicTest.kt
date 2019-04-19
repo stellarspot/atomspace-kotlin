@@ -17,6 +17,9 @@ class BaseLogicTest {
         assertEquals(FalseNode, baseAtomSpace.execute(AndLink(TrueNode, FalseNode)))
         assertEquals(FalseNode, baseAtomSpace.execute(AndLink(FalseNode, TrueNode)))
         assertEquals(FalseNode, baseAtomSpace.execute(AndLink(FalseNode, FalseNode)))
+
+        assertEquals(TrueNode, baseAtomSpace.execute(AndLink(TrueNode, AndLink(TrueNode, TrueNode))))
+        assertEquals(FalseNode, baseAtomSpace.execute(AndLink(TrueNode, AndLink(TrueNode, FalseNode))))
     }
 
     @Test

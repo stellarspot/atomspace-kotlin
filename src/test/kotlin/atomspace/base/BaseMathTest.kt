@@ -12,8 +12,22 @@ class BaseMathTest {
         val baseAtomSpace = BaseAtomSpace()
         baseAtomSpace.init()
 
-        val sum = SumLink(NumberNode(1.0), NumberNode(2.0))
-        assertEquals(NumberNode(3.0), baseAtomSpace.execute(sum))
+        assertEquals(
+                NumberNode(3.0),
+                baseAtomSpace.execute(
+                        SumLink(
+                                NumberNode(1.0),
+                                NumberNode(2.0))))
+
+        assertEquals(
+                NumberNode(6.0),
+                baseAtomSpace.execute(
+                        SumLink(
+                                NumberNode(1.0),
+                                SumLink(
+                                        NumberNode(2.0),
+                                        NumberNode(3.0)))))
+
     }
 
     @Test
@@ -21,7 +35,6 @@ class BaseMathTest {
         assertEquals(SumLink(NumberNode(1.0)), SumLink(NumberNode(1.0)))
         assertEquals(
                 SumLink(NumberNode(1.0), NumberNode(2.0)),
-                SumLink(NumberNode(1.0), NumberNode(2.0))
-        )
+                SumLink(NumberNode(1.0), NumberNode(2.0)))
     }
 }

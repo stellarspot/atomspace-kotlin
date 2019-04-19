@@ -8,7 +8,7 @@ open class Atom {
 
 abstract class Node : Atom()
 
-abstract class ObjectNode(val name: Any) : Atom() {
+abstract class ObjectNode(val name: Any) : Node() {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) {
