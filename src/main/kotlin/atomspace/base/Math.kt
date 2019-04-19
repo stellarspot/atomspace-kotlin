@@ -5,7 +5,7 @@ import atomspace.core.AtomSpace
 import atomspace.core.Link
 import atomspace.core.ObjectNode
 
-class NumberNode(val value: Double) : ObjectNode(value)
+class NumberNode(override val value: Double) : ObjectNode()
 
 fun Double.toNode(): NumberNode = NumberNode(this)
 

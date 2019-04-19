@@ -8,7 +8,9 @@ open class Atom {
 
 abstract class Node : Atom()
 
-abstract class ObjectNode(val name: Any) : Node() {
+abstract class ObjectNode : Node() {
+
+    abstract val value: Any
 
     override fun equals(other: Any?): Boolean {
         if (this === other) {
@@ -19,17 +21,17 @@ abstract class ObjectNode(val name: Any) : Node() {
             return false
         }
 
-        return this.name == other.name
+        return this.value == other.value
     }
 
     override fun hashCode(): Int {
-        return name.hashCode()
+        return value.hashCode()
     }
 
     override fun toString() = buildString {
         append(type)
         append("(")
-        append(name)
+        append(value)
         append(")")
     }
 }
