@@ -1,15 +1,18 @@
 package atomspace.base
 
-import atomspace.core.Atom
-import atomspace.core.AtomSpace
-import atomspace.core.Link
-import atomspace.core.ObjectNode
+import atomspace.core.*
 
 class NumberNode(override val value: Double) : ObjectNode()
 
-fun Double.toNode(): NumberNode = NumberNode(this)
+fun Double.toNumberNode(): NumberNode = NumberNode(this)
 
 class SumLink(override vararg val values: Atom) : Link()
+
+
+fun BaseAtomSpace.initMath() {
+    this.addAction(atomType(SumLink::class), ::sumAction)
+}
+
 
 fun sumAction(atomspace: AtomSpace, atom: Atom): Atom = when (atom) {
     is SumLink -> atom
@@ -20,6 +23,6 @@ fun sumAction(atomspace: AtomSpace, atom: Atom): Atom = when (atom) {
                     is NumberNode -> it.value
                     else -> exception("Wrong NumberNodeType")
                 }
-            }.sum().toNode()
+            }.sum().toNumberNode()
     else -> exception("Action Sum is not applicable for atom: $atom")
 }

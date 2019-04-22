@@ -8,7 +8,7 @@ import kotlin.test.assertNotEquals
 class BaseLogicTest {
 
     @Test
-    fun testSum() {
+    fun testAnd() {
 
         val baseAtomSpace = BaseAtomSpace()
         baseAtomSpace.init()
@@ -30,6 +30,70 @@ class BaseLogicTest {
         assertEquals(
                 AndLink(TrueNode, FalseNode),
                 AndLink(TrueNode, FalseNode)
+        )
+    }
+
+    @Test
+    fun testFuzzyAnd() {
+
+        val baseAtomSpace = BaseAtomSpace()
+        baseAtomSpace.init()
+        baseAtomSpace.initFuzzyLogic()
+
+        assertEquals(
+                FuzzyBooleanNode(0.3),
+                baseAtomSpace.execute(
+                        AndLink(
+                                FuzzyBooleanNode(0.3),
+                                FuzzyBooleanNode(0.4))
+                )
+        )
+
+        assertEquals(
+                true.toFuzzyBooleanNode(),
+                baseAtomSpace.execute(
+                        AndLink(
+                                true.toFuzzyBooleanNode(),
+                                true.toFuzzyBooleanNode())
+                )
+        )
+
+        assertEquals(
+                false.toFuzzyBooleanNode(),
+                baseAtomSpace.execute(
+                        AndLink(
+                                true.toFuzzyBooleanNode(),
+                                false.toFuzzyBooleanNode())
+                )
+        )
+    }
+
+    @Test
+    fun testFuzzyEquals() {
+
+        assertEquals(
+                AndLink(FuzzyBooleanNode(0.3)),
+                AndLink(FuzzyBooleanNode(0.3))
+        )
+
+        assertNotEquals(
+                AndLink(FuzzyBooleanNode(0.3)),
+                AndLink(FuzzyBooleanNode(0.4))
+        )
+
+        assertEquals(
+                AndLink(FuzzyBooleanNode(0.3), FuzzyBooleanNode(0.4)),
+                AndLink(FuzzyBooleanNode(0.3), FuzzyBooleanNode(0.4))
+        )
+
+        assertEquals(
+                AndLink(TrueFuzzyBooleanNode),
+                AndLink(FuzzyBooleanNode(1.0))
+        )
+
+        assertEquals(
+                AndLink(FalseFuzzyBooleanNode),
+                AndLink(FuzzyBooleanNode(0.0))
         )
     }
 }

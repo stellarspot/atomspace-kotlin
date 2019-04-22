@@ -33,10 +33,6 @@ class AtomSpaceException(msg: String) : java.lang.Exception(msg)
 
 fun BaseAtomSpace.init() {
 
-    val actions = mapOf<String, (AtomSpace, Atom) -> Atom>(
-            atomType(SumLink::class) to ::sumAction,
-            atomType(AndLink::class) to ::andAction
-    )
-
-    actions.forEach { type, action -> this.addAction(type, action) }
+    this.initMath()
+    this.initLogic()
 }

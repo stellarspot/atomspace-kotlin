@@ -6,7 +6,9 @@ open class Atom {
     val type: String = javaClass.canonicalName
 }
 
-abstract class Node : Atom()
+abstract class Node : Atom() {
+    override fun toString() = atomType(this.javaClass.kotlin)
+}
 
 abstract class ObjectNode : Node() {
 
