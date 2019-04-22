@@ -14,6 +14,9 @@ fun Boolean.toBooleanNode() = when (this) {
     else -> FalseNode
 }
 
+
+fun BooleanNode.toBoolean(): Boolean = this == TrueNode
+
 class FuzzyBooleanNode(override val value: Double) : ObjectNode()
 
 val TrueFuzzyBooleanNode = FuzzyBooleanNode(1.0)

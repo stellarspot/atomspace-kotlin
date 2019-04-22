@@ -35,4 +35,5 @@ fun BaseAtomSpace.init() {
 
     this.initMath()
     this.initLogic()
+    this.initCondition()
 }
