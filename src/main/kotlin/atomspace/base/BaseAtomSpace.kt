@@ -5,7 +5,7 @@ import atomspace.core.AtomSpace
 import atomspace.core.Node
 import atomspace.core.atomType
 
-class BaseAtomSpace : AtomSpace {
+open class BaseAtomSpace : AtomSpace {
 
     private val actionMap = mutableMapOf<String, (AtomSpace, Atom) -> Atom>()
 
